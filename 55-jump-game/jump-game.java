@@ -5,9 +5,7 @@ class Solution {
         for(int i = 0; i < n ; i++)
         {
             if(i > maxind)
-            {
             return false;
-            }
             maxind = Math.max(maxind, nums[i] + i);
         }
         return true;
