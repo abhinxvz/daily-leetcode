@@ -1,32 +1,25 @@
 class Solution {
     public int maxCoins(int[] nums) {
-    int[][] dp = new int[nums.length][nums.length];
-    return maxCoins(nums, 0, nums.length - 1, dp);
-}
+        int n = nums.length;
+        int newnums[] = new int[n+2];
+        newnums[0] = 1;
+        newnums[n+1] = 1;
+        for(int i = 0; i < n; i++)
+        {
+            newnums[i+1] = nums[i];
 
-public int maxCoins(int[] nums, int start, int end, int[][] dp) {
-    if (start > end) {
-        return 0;
-    }
-    if (dp[start][end] != 0) {
-        return dp[start][end];
-    }
-    int max = nums[start];
-    for (int i = start; i <= end; i++) {
-        int val = maxCoins(nums, start, i - 1, dp) + 
-                  get(nums, i) * get(nums, start - 1) * get(nums, end + 1) + 
-                  maxCoins(nums, i + 1, end, dp);
-                  
-        max = Math.max(max, val);
-    }
-    dp[start][end] = max;
-    return max;
-}
-
-public int get(int[] nums, int i) {
-    if (i == -1 || i == nums.length) {
-        return 1;
-    }
-    return nums[i];
-}
-}
+        }
+        int dp[][] = new int[n+2][n+2];
+        for(int length = 2 ; length < n + 2; length++)
+        {
+        for(int i = 0; i + length < n + 2; i++)
+        {
+          int j = i + length;
+        for(int k = i + 1; k < j; k++)
+        {
+            int coins = newnums[i] * newnums[k] * newnums[j] + dp[i][k] + dp[k][j];
+        
+            dp[i][j] = Math.max(dp[i][j], coins);
+}}}
+return dp[0][n+1];
+    }}
