@@ -4,11 +4,11 @@ class Solution {
         for(int num : nums)
         {
             pq.add(num);
-        
-        if(pq.size() > k)
-        {
-            pq.poll();
-        }}
+            if(pq.size() > k)
+            {
+                pq.poll();
+            }
+        }
         return pq.peek();
     }
 }
