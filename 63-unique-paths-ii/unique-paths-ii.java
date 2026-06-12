@@ -8,10 +8,10 @@ class Solution {
             for(int j = 0; j < n; j++)
             {
                  if(obstacleGrid[i][j] == 1){  dp[i][j] = 0;
-                 continue;}
+                }
                  else if(i == 0 && j == 0)
                  { dp[0][0] = 1;
-                 continue;
+                
                  }
                  else {
                     int up = 0, low = 0;
