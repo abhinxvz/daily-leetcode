@@ -1,29 +1,29 @@
 class Solution {
-    public int numberOfSubarrays(int[] nums, int k) {
-        return atmost(nums,k) - atmost(nums,k-1);
-    }
-    public int atmost(int nums[], int k)
-    {
-        int left = 0;
-        int count = 0;
-        int odd_count = 0;
-        for(int right = 0 ; right < nums.length; right++)
-        {
-            if(nums[right] % 2 != 0)
-            {
-                odd_count++;
-            }
-            while(odd_count > k)
-            {
-                if(nums[left] % 2 != 0)
-                {
-                    odd_count--;
-                }
-                left++;
-            }
-            count+=(right - left + 1);
+     private int atMost(int[] nums, int goal) {
+        if (goal < 0) return 0;
 
+        int l = 0, r = 0;
+        int sum = 0;
+        int cnt = 0;
+
+        while (r < nums.length) {
+            sum += nums[r]%2;
+
+            while (sum > goal) {
+                sum -= nums[l]%2;
+                l++;
+            }
+
+            cnt += (r - l + 1);
+            r++;
         }
-        return count;
+
+        return cnt;
+    }
+
+    public int numberOfSubarrays(int[] nums, int k) {
+        return atMost(nums, k) - atMost(nums, k - 1);
     }
 }
+        
+   
