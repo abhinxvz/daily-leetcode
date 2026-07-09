@@ -1,13 +1,14 @@
 class Solution {
     public boolean search(int[] nums, int target) {
         int n = nums.length;
-        int left = 0, right = n - 1;
+        int left = 0;
+        int right = n - 1;
         while(left <= right)
         {
-            int mid = left + (right - left) / 2;
+            int mid = left + (right - left)/2;
             if(nums[mid] == target)
             {
-                return true;
+               return true; 
             }
             if(nums[left] == nums[mid] && nums[mid]==nums[right])
             {
@@ -24,17 +25,18 @@ class Solution {
                     left = mid + 1;
                 }
             }
-            else{
+            else {
                 if(nums[mid] < target && target <= nums[right])
                 {
                     left = mid + 1;
                 }
-                else 
-                {
+                else {
                     right = mid - 1;
+                }
             }
         }
-    }
-    return false;
-}
-}
+        return false;
+    }}
+
+        
+   
