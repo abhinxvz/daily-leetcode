@@ -6,7 +6,8 @@ class Solution {
         left[0] = 1;
         right[n-1] = 1;
         int sum = 0;
-        for(int i = 1; i <= n-1; i++)
+
+        for(int i = 1; i <= n - 1; i++)
         {
             if(ratings[i] > ratings[i-1])
             {
@@ -17,24 +18,22 @@ class Solution {
 
             }
         }
-         for(int i = n - 2; i >=0 ; i--)
+
+        for(int i = n - 2; i >= 0; i--)
         {
-            if(ratings[i] > ratings[i+1])
-            {
-               right[i] = 1 + right[i+1];
-            }
-            else {
-                right[i] = 1;
-
-            }
+          if(ratings[i] > ratings[i+1])
+          {
+            right[i] = 1 + right[i+1];
         }
-        for(int i = 0; i < n ; i++)
-        {
-            sum += Math.max(left[i],right[i]);
+        else {
+            right[i] = 1;
         }
-        return sum;
-
-
-        }
-        
     }
+
+    for(int i = 0; i < n; i++)
+    {
+        sum+= Math.max(left[i], right[i]);
+    }
+    return sum;
+    }
+}
