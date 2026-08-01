@@ -7,7 +7,7 @@ class Solution {
         right[n-1] = 1;
         int sum = 0;
 
-        for(int i = 1; i <= n - 1; i++)
+        for(int i = 1; i < n ; i++)
         {
             if(ratings[i] > ratings[i-1])
             {
