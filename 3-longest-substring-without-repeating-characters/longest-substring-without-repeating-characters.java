@@ -7,16 +7,15 @@ class Solution {
         while(right < n)
         {
             char ch = s.charAt(right);
-
             while(set.contains(ch))
             {
                 set.remove(s.charAt(left));
                 left++;
             }
-
             set.add(ch);
             maxlen = Math.max(maxlen, right - left + 1);
             right++;
+
         }
         return maxlen;
     }
